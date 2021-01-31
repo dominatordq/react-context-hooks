@@ -14,7 +14,7 @@ function Counter(props) {
 
     return (
         <Fragment>
-            <input type="text" onChange={ e => setName(e.target.value) }></input>
+            <input type="text" placeholder="Enter name here" onChange={ e => setName(e.target.value) }></input>
             <div>
                 {name} has clicked {count} times!
             </div>
