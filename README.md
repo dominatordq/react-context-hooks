@@ -1,3 +1,9 @@
+# My Notes
+
+Type `npm i` in a terminal to install all the dependencies needed to run.
+
+This is a very simple program I made to familiarize myself with hooks in React.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
