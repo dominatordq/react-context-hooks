@@ -31,6 +31,8 @@ class App extends Component {
           <div>
             <MoviePage />
             <Login />
+            <Counter />
+            <Users />
           </div>
         </UserContext.Provider>
       </CartContext.Provider>
