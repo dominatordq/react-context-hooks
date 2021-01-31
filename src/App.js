@@ -1,25 +1,49 @@
 import logo from './logo.svg';
 import './App.css';
+import Movie from './hoc/Movie';
+import Counter from './hooks/Counter';
+import Users from './hooks/Users';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+import React, { Component } from 'react';
+import MoviePage from './context/MoviePage';
+import UserContext from './context/userContext';
+import CartContext from './context/cartContext';
+import Login from './context/Login';
+
+class App extends Component {
+  handleLoggedIn = (username) => {
+    console.log('Getting the user: ' + username);
+    const user = { name: 'Dom' }; // simulates getting a user from a db
+    this.setState({ currentUser: user }); // update context
+  }
+
+  state = { currentUser: null };
+
+  render() {
+    return (
+      <CartContext.Provider value={{ cart: [] }}>
+        <UserContext.Provider 
+          value={{ // any component in our component tree can access these values
+            currentUser: this.state.currentUser, 
+            onLoggedIn: this.handleLoggedIn 
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          <div>
+            <MoviePage />
+            <Login />
+          </div>
+        </UserContext.Provider>
+      </CartContext.Provider>
+    );
+  }
 }
 
 export default App;
+
+// function App() {
+//   return (
+//     <Users />
+//   );
+// }
+
+// export default App;
